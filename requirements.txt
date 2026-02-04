@@ -1,0 +1,6 @@
+streamlit>=1.28.0
+tinydb>=4.8.0
+python-dotenv>=1.0.0
+yagmail>=0.15.293
+loguru>=0.7.2
+openai>=1.0.0
