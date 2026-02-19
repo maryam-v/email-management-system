@@ -1,11 +1,12 @@
-import streamlit as st
+﻿import streamlit as st
 
 from utils.db import DatabaseManager
+
 
 db = DatabaseManager()
 
 
-def main():
+def main() -> None:
     st.title("🙋‍♀️ User Profile")
 
     user_profile = db.get_user_profile()
@@ -34,9 +35,7 @@ def main():
         with col1:
             linkedin = st.text_input(
                 "Linkedin",
-                value=user_profile.get("social_media", {}).get("linkedin", "")
-                if user_profile
-                else "",
+                value=user_profile.get("social_media", {}).get("linkedin", "") if user_profile else "",
             )
             x = st.text_input(
                 "X", value=user_profile.get("social_media", {}).get("x", "") if user_profile else ""
@@ -44,15 +43,11 @@ def main():
         with col2:
             github = st.text_input(
                 "GitHub",
-                value=user_profile.get("social_media", {}).get("github", "")
-                if user_profile
-                else "",
+                value=user_profile.get("social_media", {}).get("github", "") if user_profile else "",
             )
             personal_website = st.text_input(
                 "Personal Website",
-                value=user_profile.get("social_media", {}).get("personal website", "")
-                if user_profile
-                else "",
+                value=user_profile.get("social_media", {}).get("personal website", "") if user_profile else "",
             )
 
         signature = st.text_area(
@@ -77,12 +72,6 @@ def main():
                     name, title, degree, university, profession, social_media, signature
                 )
             st.success("Profile updated successfully")
-
-    # col1, col2 = st.columns([1, 3])
-    # with col1:
-    #     if st.button("Delete Profile", type="secondary", disabled=not user_profile):
-    #         db.delete_user_profile()
-    #         st.success("Profile deleted")
 
 
 if __name__ == "__main__":

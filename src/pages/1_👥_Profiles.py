@@ -1,11 +1,12 @@
-import streamlit as st
+﻿import streamlit as st
 
 from utils.db import DatabaseManager
+
 
 db = DatabaseManager()
 
 
-def main():
+def main() -> None:
     st.title("👥 Profiles")
     st.caption("Add team members, then use them as recipients across the app.")
     st.divider()
@@ -27,7 +28,7 @@ def main():
                 title = st.text_input("Title", placeholder="Research Lead")
                 profession = st.text_input("Profession", placeholder="Software Engineer")
 
-            submitted = st.form_submit_button("➕ Add Profile", use_container_width=True)
+            submitted = st.form_submit_button("➕ Add Profile", width="stretch")
 
             if submitted:
                 if name and email and title and profession:
@@ -53,7 +54,7 @@ def main():
                     st.caption(f"{profile['title']} · {profile['profession']}")
                 with col2:
                     st.caption(f"ID: {profile.doc_id}")
-                    if st.button("🗑️ Delete", key=f"delete_{profile.doc_id}", use_container_width=True):
+                    if st.button("🗑️ Delete", key=f"delete_{profile.doc_id}", width="stretch"):
                         db.delete_profile(profile.doc_id)
                         st.success("Profile deleted")
                         st.rerun()

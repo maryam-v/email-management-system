@@ -100,7 +100,7 @@ def main():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("🚀 Send Now", use_container_width=True, disabled=not can_send):
+        if st.button("🚀 Send Now", width="stretch", disabled=not can_send):
             if can_send:
                 errors = []
                 for profile_id in selected_profile_ids:
@@ -133,7 +133,7 @@ def main():
             step=timedelta(minutes=5),
             help="Pick the time to send.",
         )
-        if st.button("🗓️ Schedule", use_container_width=True, disabled=not can_send):
+        if st.button("🗓️ Schedule", width="stretch", disabled=not can_send):
             if can_send:
                 schedule_datetime = datetime.combine(schedule_date, schedule_time)
                 for profile_id in selected_profile_ids:
@@ -154,7 +154,7 @@ def main():
             step=1,
             help="Create a reminder after this many days.",
         )
-        if st.button("⏰ Add Reminder", use_container_width=True, disabled=not can_send):
+        if st.button("⏰ Add Reminder", width="stretch", disabled=not can_send):
             if can_send:
                 reminder_date = datetime.now() + timedelta(days=reminder_days)
                 for profile_id in selected_profile_ids:
@@ -170,3 +170,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

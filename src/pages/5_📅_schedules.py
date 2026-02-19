@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 """Schedules page: view, reschedule, and cancel scheduled emails."""
 
@@ -12,6 +12,7 @@ from features.schedules import (
     validate_future_schedule,
 )
 from utils.db import DatabaseManager
+
 
 db = DatabaseManager()
 
@@ -87,7 +88,7 @@ def main() -> None:
                     key=f"schedule_time_{row.schedule_id}",
                 )
 
-                if st.button("💾 Reschedule", key=f"reschedule_{row.schedule_id}", use_container_width=True):
+                if st.button("💾 Reschedule", key=f"reschedule_{row.schedule_id}", width="stretch"):
                     new_target = combine_schedule_datetime(schedule_date, schedule_time)
                     is_valid, error_message = validate_future_schedule(new_target)
                     if not is_valid:
@@ -97,7 +98,7 @@ def main() -> None:
                         st.success("Schedule updated successfully.")
                         st.rerun()
 
-                if st.button("🗑️ Cancel", key=f"cancel_{row.schedule_id}", use_container_width=True):
+                if st.button("🗑️ Cancel", key=f"cancel_{row.schedule_id}", width="stretch"):
                     db.delete_schedule(row.schedule_id)
                     st.success("Schedule cancelled.")
                     st.rerun()

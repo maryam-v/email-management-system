@@ -1,11 +1,12 @@
-import streamlit as st
+﻿import streamlit as st
 
 from utils.db import DatabaseManager
+
 
 db = DatabaseManager()
 
 
-def main():
+def main() -> None:
     st.title("📄 Email Templates")
     st.caption("Create reusable templates to speed up sending.")
     st.divider()
@@ -24,7 +25,7 @@ def main():
                 height=220,
                 placeholder="Hi {{name}},\nIt was great talking about ...",
             )
-            submitted = st.form_submit_button("➕ Add Template", use_container_width=True)
+            submitted = st.form_submit_button("➕ Add Template", width="stretch")
 
             if submitted:
                 if template_name and template_body:
@@ -52,7 +53,7 @@ def main():
                     disabled=True,
                     label_visibility="collapsed",
                 )
-                if st.button("🗑️ Delete", key=f"delete_{template.doc_id}", use_container_width=True):
+                if st.button("🗑️ Delete", key=f"delete_{template.doc_id}", width="stretch"):
                     db.delete_template(template.doc_id)
                     st.success("Template deleted")
                     st.rerun()

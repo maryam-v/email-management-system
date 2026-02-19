@@ -1,4 +1,4 @@
-"""Side-by-side chatbot page that compares OpenAI and Bedrock responses."""
+﻿"""Side-by-side chatbot page that compares OpenAI and Bedrock responses."""
 
 import streamlit as st
 
@@ -102,7 +102,7 @@ def main():
     _init_state()
 
     test_cols = st.columns(2)
-    if test_cols[0].button("Test OpenAI", use_container_width=True):
+    if test_cols[0].button("Test OpenAI", width="stretch"):
         with st.spinner("Testing OpenAI..."):
             ok, message = test_provider_connection("openai")
         if ok:
@@ -110,7 +110,7 @@ def main():
         else:
             st.error(message)
 
-    if test_cols[1].button("Test Bedrock", use_container_width=True):
+    if test_cols[1].button("Test Bedrock", width="stretch"):
         with st.spinner("Testing Bedrock..."):
             ok, message = test_provider_connection("bedrock")
         if ok:
@@ -158,3 +158,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

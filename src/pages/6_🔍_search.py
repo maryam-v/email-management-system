@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 """Search page for discovering sent email history."""
 
@@ -9,6 +9,7 @@ import streamlit as st
 
 from features.search import SearchFilters, apply_filters
 from utils.db import DatabaseManager
+
 
 db = DatabaseManager()
 
